@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2P Direct Share</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Placeholder for QR Code Generator Library -->
+    <!-- <script src="path/to/qrcode.min.js"></script> -->
+    <!-- Placeholder for QR Code Scanner Library -->
+    <!-- <script src="path/to/html5-qrcode.min.js"></script> -->
+</head>
+<body>
+
+    <div id="appContainer">
+
+        <!-- 1. Initial Screen -->
+        <div id="initialScreen" class="screen active">
+            <h1>P2P Direct Share</h1>
+            <p>Share files and messages directly with another device on the same WiFi.</p>
+            <button id="startSessionBtn">Start Sharing Session</button>
+            <button id="joinSessionBtn">Join Existing Session</button>
+            <div id="status" class="status-box">Status: Idle</div>
+        </div>
+
+        <!-- 2. Host Screen (Waiting for Client Answer) -->
+        <div id="hostScreen" class="screen">
+            <h2>Sharing Session Started</h2>
+            <p>Ask the other person to scan or copy this Offer Code:</p>
+            <div id="offerQrCode" class="qr-placeholder">[Offer QR Code Area]</div>
+            <textarea id="offerCode" rows="5" readonly></textarea>
+            <button id="copyOfferBtn">Copy Offer</button>
+
+            <hr>
+            <p>Paste the Answer Code from the other device below:</p>
+            <textarea id="answerInputHost" rows="5" placeholder="Paste Answer Code here..."></textarea>
+            <button id="submitAnswerBtn">Connect</button>
+            <!-- <button id="scanAnswerQrBtn">Scan Answer QR</button> -->
+            <button id="cancelHostBtn" class="cancel-button">Cancel</button>
+            <div id="hostStatus" class="status-box">Status: Waiting for Answer...</div>
+        </div>
+
+        <!-- 3. Client Screen (Entering Offer / Displaying Answer) -->
+        <div id="clientScreen" class="screen">
+            <h2>Join Session</h2>
+            <div id="clientOfferInputSection">
+                <p>Paste the Offer Code from the host device below:</p>
+                <textarea id="offerInputClient" rows="5" placeholder="Paste Offer Code here..."></textarea>
+                <button id="submitOfferBtn">Generate Answer</button>
+                <!-- <button id="scanOfferQrBtn">Scan Offer QR</button> -->
+            </div>
+
+            <div id="clientAnswerDisplaySection" style="display: none;">
+                 <hr>
+                <p>Connection request sent! Show this Answer Code back to the host:</p>
+                <div id="answerQrCode" class="qr-placeholder">[Answer QR Code Area]</div>
+                <textarea id="answerCode" rows="5" readonly></textarea>
+                <button id="copyAnswerBtn">Copy Answer</button>
+                <div id="clientStatus" class="status-box">Status: Waiting for host to connect...</div>
+            </div>
+             <button id="cancelClientBtn" class="cancel-button">Cancel</button>
+        </div>
+
+        <!-- 4. Connected Screen -->
+        <div id="connectedScreen" class="screen">
+            <h2>Connected!</h2>
+            <div id="connectionStatus" class="status-box">Status: Connected</div>
+            <button id="disconnectBtn">Disconnect</button>
+
+            <div class="chat-section">
+                <h3>Messages</h3>
+                <div id="messages" class="message-area"></div>
+                <div class="message-input">
+                    <input type="text" id="messageInput" placeholder="Type message...">
+                    <button id="sendMessageBtn">Send</button>
+                </div>
+            </div>
+
+            <div class="file-section">
+                <h3>Files</h3>
+                <input type="file" id="fileInput">
+                <button id="sendFileBtn" disabled>Send File</button> <!-- Disabled until connection -->
+                <div id="fileStatus"></div>
+            </div>
+        </div>
+
+         <!-- QR Scanner Placeholder -->
+         <!-- <div id="qrReader" style="width: 300px; margin-top: 20px;"></div> -->
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
