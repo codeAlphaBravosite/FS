@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P2P Direct Share</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Placeholder for QR Code Generator Library -->
-    <!-- <script src="path/to/qrcode.min.js"></script> -->
-    <!-- Placeholder for QR Code Scanner Library -->
-    <!-- <script src="path/to/html5-qrcode.min.js"></script> -->
 </head>
 <body>
 
@@ -26,16 +22,14 @@
         <!-- 2. Host Screen (Waiting for Client Answer) -->
         <div id="hostScreen" class="screen">
             <h2>Sharing Session Started</h2>
-            <p>Ask the other person to scan or copy this Offer Code:</p>
-            <div id="offerQrCode" class="qr-placeholder">[Offer QR Code Area]</div>
-            <textarea id="offerCode" rows="5" readonly></textarea>
+            <p>Copy this Offer Code and send it to the other person:</p>
+            <textarea id="offerCode" rows="6" readonly></textarea>
             <button id="copyOfferBtn">Copy Offer</button>
 
             <hr>
             <p>Paste the Answer Code from the other device below:</p>
-            <textarea id="answerInputHost" rows="5" placeholder="Paste Answer Code here..."></textarea>
+            <textarea id="answerInputHost" rows="6" placeholder="Paste Answer Code here..."></textarea>
             <button id="submitAnswerBtn">Connect</button>
-            <!-- <button id="scanAnswerQrBtn">Scan Answer QR</button> -->
             <button id="cancelHostBtn" class="cancel-button">Cancel</button>
             <div id="hostStatus" class="status-box">Status: Waiting for Answer...</div>
         </div>
@@ -45,16 +39,14 @@
             <h2>Join Session</h2>
             <div id="clientOfferInputSection">
                 <p>Paste the Offer Code from the host device below:</p>
-                <textarea id="offerInputClient" rows="5" placeholder="Paste Offer Code here..."></textarea>
+                <textarea id="offerInputClient" rows="6" placeholder="Paste Offer Code here..."></textarea>
                 <button id="submitOfferBtn">Generate Answer</button>
-                <!-- <button id="scanOfferQrBtn">Scan Offer QR</button> -->
             </div>
 
             <div id="clientAnswerDisplaySection" style="display: none;">
                  <hr>
-                <p>Connection request sent! Show this Answer Code back to the host:</p>
-                <div id="answerQrCode" class="qr-placeholder">[Answer QR Code Area]</div>
-                <textarea id="answerCode" rows="5" readonly></textarea>
+                <p>Connection request sent! Copy this Answer Code and send it back to the host:</p>
+                <textarea id="answerCode" rows="6" readonly></textarea>
                 <button id="copyAnswerBtn">Copy Answer</button>
                 <div id="clientStatus" class="status-box">Status: Waiting for host to connect...</div>
             </div>
@@ -78,14 +70,13 @@
 
             <div class="file-section">
                 <h3>Files</h3>
-                <input type="file" id="fileInput">
-                <button id="sendFileBtn" disabled>Send File</button> <!-- Disabled until connection -->
+                <input type="file" id="fileInput" style="display: none;"> <!-- Hide default input -->
+                <button id="selectFileBtn" disabled>Select File</button> <!-- Use a button to trigger input -->
+                <span id="selectedFileName">No file selected</span>
+                <button id="sendFileBtn" disabled>Send File</button>
                 <div id="fileStatus"></div>
             </div>
         </div>
-
-         <!-- QR Scanner Placeholder -->
-         <!-- <div id="qrReader" style="width: 300px; margin-top: 20px;"></div> -->
 
     </div>
 
